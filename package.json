@@ -1,0 +1,33 @@
+{
+  "name": "starknet-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/material": "^5.16.7",
+    "@starknet-react/chains": "^0.1.7",
+    "@starknet-react/core": "^2.9.0",
+    "@walnuthq/sdk": "^1.1.11",
+    "get-starknet-core": "^3.3.3",
+    "next": "14.2.6",
+    "react": "^18",
+    "react-dom": "^18",
+    "starknet": "^6.11.0",
+    "starknetkit": "^1.1.9"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "prettier": "^3.3.3",
+    "typescript": "^5"
+  }
+}
