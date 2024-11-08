@@ -1,7 +1,11 @@
 'use client'
 import { ReactNode } from 'react'
 import { Chain, mainnet, sepolia } from '@starknet-react/chains'
-import { StarknetConfig, jsonRpcProvider, voyager } from '@starknet-react/core'
+import {
+  StarknetConfig,
+  jsonRpcProvider,
+  starkscan,
+} from '@starknet-react/core'
 import { getConnectors } from '@/utils/connectorWrapper'
 import { currentRpc } from '@/utils/network'
 
@@ -23,7 +27,7 @@ export default function StarknetProvider({ children }: StarknetProviderProps) {
       provider={providers}
       connectors={getConnectors()}
       autoConnect
-      explorer={voyager}
+      explorer={starkscan}
     >
       {children}
     </StarknetConfig>
