@@ -1,19 +1,19 @@
 'use client'
 import { ReactNode } from 'react'
 import { Chain, mainnet, sepolia } from '@starknet-react/chains'
-import { StarknetConfig, jsonRpcProvider } from '@starknet-react/core'
+import { StarknetConfig, jsonRpcProvider, voyager } from '@starknet-react/core'
 import { getConnectors } from '@/utils/connectorWrapper'
-import { defaultEndpoint } from '@/utils/network'
+import { currentRpc } from '@/utils/network'
 
 interface StarknetProviderProps {
   children: ReactNode
 }
 
 export default function StarknetProvider({ children }: StarknetProviderProps) {
-  const chains = [process.env.NEXT_PUBLIC_ENV === 'dev' ? sepolia : mainnet]
+  const chains = [process.env.NEXT_PUBLIC_ENV === 'prod' ? mainnet : sepolia]
   const providers = jsonRpcProvider({
     rpc: (_chain: Chain) => ({
-      nodeUrl: defaultEndpoint,
+      nodeUrl: currentRpc,
     }),
   })
 
@@ -23,6 +23,7 @@ export default function StarknetProvider({ children }: StarknetProviderProps) {
       provider={providers}
       connectors={getConnectors()}
       autoConnect
+      explorer={voyager}
     >
       {children}
     </StarknetConfig>
