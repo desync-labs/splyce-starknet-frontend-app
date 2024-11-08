@@ -46,7 +46,7 @@ const StarkWallet = () => {
   const [isWrongNetwork, setIsWrongNetwork] = useState(false);
   const [isWalletDrawerShown, setIsWalletDrawerShown] = useState(false);
 
-  const { connect, connectors, status, connector } = useConnect();
+  const { connect, connectors, connector } = useConnect();
   const { address, account, isConnected } = useAccount();
   const { chain } = useNetwork();
   const { disconnect } = useDisconnect();
@@ -132,6 +132,7 @@ const StarkWallet = () => {
         />
       </>
     );
+
   return (
     <>
       <IconButton color="inherit" onClick={handleWalletsModalOpen}>

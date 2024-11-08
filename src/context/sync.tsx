@@ -30,7 +30,7 @@ export const SyncProvider: FC<StakingProviderType> = ({ children }) => {
   >(null);
   const [initialBlock, setInitialBlock] = useState<number | null>(null);
 
-  const { data, error } = useBlockNumber();
+  const { data } = useBlockNumber();
 
   useEffect(() => {
     if (data) {

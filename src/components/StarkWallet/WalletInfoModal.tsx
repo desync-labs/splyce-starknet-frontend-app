@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Connector,
   useAccount,
@@ -17,7 +17,7 @@ import { BaseDialogCloseIcon } from "@/components/Base/Dialog/BaseDialogTitle";
 import { FlexBox } from "@/components/Base/Boxes/StyledBoxes";
 import { encodeStr } from "@/utils/common";
 import { getConnectorIcon } from "@/utils/connectorWrapper";
-import { formatNumber } from "@/utils/format";
+import { formatNumberPrice } from "@/utils/format";
 import { currentNetWork } from "@/utils/network";
 
 const StyledDrawer = styled(Drawer)`
@@ -76,10 +76,11 @@ const WalletInfoModal = ({
   const { disconnect } = useDisconnect();
   const { address } = useAccount();
 
-  const nativeToken =
-    currentNetWork === mainnet.network
+  const nativeToken = useMemo(() => {
+    return currentNetWork === mainnet.network
       ? mainnet.nativeCurrency
       : sepolia.nativeCurrency;
+  }, [currentNetWork]);
 
   const { data: nativeTokenBalance, error } = useBalance({
     token: nativeToken.address,
@@ -126,7 +127,7 @@ const WalletInfoModal = ({
           <NativeTokenBalance>
             Balance:{" "}
             <span>
-              {formatNumber(
+              {formatNumberPrice(
                 BigNumber(nativeTokenBalance?.value?.toString())
                   .dividedBy(10 ** nativeTokenBalance.decimals)
                   .toNumber()
