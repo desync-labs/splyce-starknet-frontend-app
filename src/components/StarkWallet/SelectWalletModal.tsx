@@ -42,7 +42,7 @@ const WalletItem = ({
   onSelectWallet,
 }: {
   connector: Connector
-  onSelectWallet: (Connector) => void
+  onSelectWallet: (arg0: Connector) => void
 }) => {
   const isAvailable = connector.available()
   const router = useRouter()

@@ -1,7 +1,7 @@
 import { constants } from 'starknet'
-import { Connector, StarknetWindowObject } from 'starknetkit'
-import { ArgentMobileConnector } from 'starknetkit/argentMobile'
-import { InjectedConnector } from 'starknetkit/injected'
+import { Connector, InjectedConnector } from '@starknet-react/core'
+import { StarknetWindowObject } from 'starknetkit'
+import { ArgentMobileBaseConnector } from 'starknetkit/argentMobile'
 import { WebWalletConnector } from 'starknetkit/webwallet'
 import { getBrowser } from '@/utils/browserService'
 
@@ -11,7 +11,7 @@ export const getConnectors = () => {
     new InjectedConnector({ options: { id: 'braavos' } }),
     new InjectedConnector({ options: { id: 'okxwallet' } }),
     new InjectedConnector({ options: { id: 'bitkeep' } }),
-    new ArgentMobileConnector({
+    new ArgentMobileBaseConnector({
       dappName: 'Starknet Desync',
       chainId: constants.NetworkName.SN_MAIN,
     }),

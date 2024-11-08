@@ -1,5 +1,5 @@
 import { FC, memo, useEffect, useMemo, useState } from 'react'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import Link from 'next/link'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import dayjs from 'dayjs'

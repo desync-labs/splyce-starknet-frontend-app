@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { Box, ListItemText, styled, Typography } from '@mui/material'
 import {
   VaultAboutTitle,

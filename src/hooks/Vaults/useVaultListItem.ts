@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { useLazyQuery } from '@apollo/client'
 import dayjs from 'dayjs'
 import { useAccount } from '@starknet-react/core'

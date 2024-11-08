@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react'
 import { Box, Paper, styled, Typography } from '@mui/material'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import useVaultContext from '@/context/vaultDetail'
 import useSharedContext from '@/context/shared'
 import { formatNumber } from '@/utils/format'

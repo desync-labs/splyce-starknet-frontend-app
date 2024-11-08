@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import { FormProvider } from 'react-hook-form'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import {
   Box,
   Button,

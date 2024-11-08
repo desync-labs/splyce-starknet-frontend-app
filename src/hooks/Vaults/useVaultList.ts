@@ -1,6 +1,6 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { useLazyQuery, useQuery } from '@apollo/client'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { useAccount } from '@starknet-react/core'
 
 import { ACCOUNT_VAULT_POSITIONS, VAULTS } from '@/apollo/queries'

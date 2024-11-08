@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Box, styled } from '@mui/material'
 import { Control, Controller, UseFormHandleSubmit } from 'react-hook-form'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 
 import { getTokenLogoURL } from '@/utils/tokenLogo'
 import { formatNumber } from '@/utils/format'

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useLazyQuery } from '@apollo/client'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { useAccount } from '@starknet-react/core'
 import {
   VAULTS_ACCOUNT_WITHDRAWALS,

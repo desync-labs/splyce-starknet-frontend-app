@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import Image from 'next/image'
 import { Box, styled } from '@mui/material'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { formatNumber } from '@/utils/format'
 import useSharedContext from '@/context/shared'
 import useTotalStats from '@/hooks/Vaults/useTotalStats'

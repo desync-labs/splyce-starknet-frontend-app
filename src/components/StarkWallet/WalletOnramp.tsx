@@ -22,7 +22,7 @@ export default function WalletOnramp() {
     handleClose()
   })
 
-  if (connected)
+  if (connected) {
     return (
       <>
         <MoonpayBuy>
@@ -36,7 +36,9 @@ export default function WalletOnramp() {
               borderRadius="50em"
               border="2px solid transparent"
               color={colors.text02}
-              leftIcon={<MoonPayIcon width="16px" height="16px" color={colors.text02} />}
+              leftIcon={
+                <MoonPayIcon width="16px" height="16px" color={colors.text02} />
+              }
             >
               {t('button.deposit')}
             </Button>
@@ -44,12 +46,23 @@ export default function WalletOnramp() {
         </MoonpayBuy>
       </>
     )
+  }
+
   return (
     <Box>
-      <Button isLoading={connecting} loadingText="Connecting.." onClick={handleOpen}>
+      <Button
+        isLoading={connecting}
+        loadingText="Connecting.."
+        onClick={handleOpen}
+      >
         {t('button.connect_wallet')}
       </Button>
-      <SelectWalletModal wallets={wallets} isOpen={visible} onClose={handleClose} onSelectWallet={handleSelectWallet} />
+      <SelectWalletModal
+        wallets={wallets}
+        isOpen={visible}
+        onClose={handleClose}
+        onSelectWallet={handleSelectWallet}
+      />
     </Box>
   )
 }

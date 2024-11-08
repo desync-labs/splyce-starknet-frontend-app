@@ -4,7 +4,12 @@ import IconButton from '@mui/material/IconButton'
 import { AccountBalanceWallet as AccountBalanceWalletIcon } from '@mui/icons-material'
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded'
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded'
-import { useAccount, useConnect, useDisconnect } from '@starknet-react/core'
+import {
+  useAccount,
+  useConnect,
+  useDisconnect,
+  useNetwork,
+} from '@starknet-react/core'
 
 import SelectWalletModal from './SelectWalletModal'
 import { FlexBox } from '@/components/Base/Boxes/StyledBoxes'
@@ -15,6 +20,7 @@ import { getConnectorIcon } from '@/utils/connectorWrapper'
 import { mainnet, sepolia } from '@starknet-react/chains'
 import { BaseButtonSecondary } from '@/components/Base/Buttons/StyledButtons'
 import { defaultNetWork } from '@/utils/network'
+import { Connector, InjectedConnector } from '@starknet-react/core'
 
 const WalletInfo = styled(FlexBox)`
   justify-content: flex-end;
@@ -41,6 +47,7 @@ const StarkWallet = () => {
 
   const { connect, connectors, status, connector } = useConnect()
   const { address, account, isConnected } = useAccount()
+  const { chain } = useNetwork()
   const { disconnect } = useDisconnect()
 
   useEffect(() => {
@@ -67,7 +74,7 @@ const StarkWallet = () => {
     [setVisibleWalletsModal]
   )
 
-  const handleSelectWallet = (connector) => {
+  const handleSelectWallet = (connector: Connector) => {
     connect({ connector })
     handleWalletsModalClose()
   }
@@ -105,8 +112,8 @@ const StarkWallet = () => {
           message={
             <>
               <Typography mb={2}>
-                This app only supports Starknet {network}, you have to change
-                your network to be able use it.
+                This app only supports Starknet {chain.network}, you have to
+                change your network to be able use it.
               </Typography>
               <BaseButtonSecondary onClick={() => disconnectByClick()}>
                 Disconnect

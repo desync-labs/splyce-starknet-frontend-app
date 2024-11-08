@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { Box, List, styled } from '@mui/material'
 import { IVaultStrategyReport, VaultType } from '@/utils/TempData'
 import useVaultContext from '@/context/vaultDetail'

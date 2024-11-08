@@ -2,7 +2,7 @@ import { FC, memo, useCallback, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Box, TableCell, styled, Button, CircularProgress } from '@mui/material'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 
 import { IVault, IVaultPosition } from '@/utils/TempData'
 import { getTokenLogoURL } from '@/utils/tokenLogo'

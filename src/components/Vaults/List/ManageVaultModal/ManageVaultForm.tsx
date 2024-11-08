@@ -1,6 +1,6 @@
 import { FC, memo, useMemo } from 'react'
 import { Box, styled } from '@mui/material'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { Control, Controller, UseFormHandleSubmit } from 'react-hook-form'
 
 import { FormType } from '@/hooks/Vaults/useVaultManageDeposit'

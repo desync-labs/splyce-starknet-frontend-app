@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useAccount } from '@starknet-react/core'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import debounce from 'lodash.debounce'
 import { IVault, VaultType } from '@/utils/TempData'
 import {

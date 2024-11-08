@@ -1,6 +1,6 @@
 import { ChangeEvent, memo, useState } from 'react'
 import Image from 'next/image'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { Box, Paper, styled, Typography } from '@mui/material'
 
 import useVaultContext from '@/context/vaultDetail'

@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import BigNumber from 'big-number'
+import BigNumber from 'bignumber.js'
 import { Box, Divider, ListItemText } from '@mui/material'
 import { formatNumber, formatPercentage } from '@/utils/format'
 import { IVault } from '@/utils/TempData'
