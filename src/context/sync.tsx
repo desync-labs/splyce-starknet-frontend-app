@@ -7,51 +7,51 @@ import {
   useEffect,
   useMemo,
   useState,
-} from 'react'
-import { useBlockNumber, useProvider } from '@starknet-react/core'
+} from "react";
+import { useBlockNumber } from "@starknet-react/core";
 
 type StakingProviderType = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 type UseSyncContextReturn = {
-  initialBlock: number | null
-  setLastTransactionBlock: Dispatch<number>
-  lastTransactionBlock: number | null
-}
+  initialBlock: number | null;
+  setLastTransactionBlock: Dispatch<number>;
+  lastTransactionBlock: number | null;
+};
 
 export const SyncContext = createContext<UseSyncContextReturn>(
   {} as UseSyncContextReturn
-)
+);
 
 export const SyncProvider: FC<StakingProviderType> = ({ children }) => {
   const [lastTransactionBlock, setLastTransactionBlock] = useState<
     number | null
-  >(null)
-  const [initialBlock, setInitialBlock] = useState<number | null>(null)
+  >(null);
+  const [initialBlock, setInitialBlock] = useState<number | null>(null);
 
-  const { data, error } = useBlockNumber()
+  const { data, error } = useBlockNumber();
 
   useEffect(() => {
     if (data) {
       if (!initialBlock) {
-        setInitialBlock(data)
+        setInitialBlock(data);
       }
-      setLastTransactionBlock(data)
+      setLastTransactionBlock(data);
     }
-  }, [setLastTransactionBlock, setInitialBlock])
+  }, [setLastTransactionBlock, setInitialBlock]);
 
   const values = useMemo(() => {
     return {
       initialBlock,
       lastTransactionBlock,
       setLastTransactionBlock,
-    }
-  }, [setLastTransactionBlock, lastTransactionBlock])
+    };
+  }, [setLastTransactionBlock, lastTransactionBlock]);
 
-  return <SyncContext.Provider value={values}>{children}</SyncContext.Provider>
-}
+  return <SyncContext.Provider value={values}>{children}</SyncContext.Provider>;
+};
 
-const useSyncContext = () => useContext(SyncContext)
+const useSyncContext = () => useContext(SyncContext);
 
-export default useSyncContext
+export default useSyncContext;
