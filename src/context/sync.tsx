@@ -31,7 +31,7 @@ export const SyncProvider: FC<StakingProviderType> = ({ children }) => {
   >(null)
   const [initialBlock, setInitialBlock] = useState<number | null>(null)
 
-  const provider = useProvider()
+  const { provider } = useProvider()
 
   useEffect(() => {
     const getLatestSlot = async () => {
