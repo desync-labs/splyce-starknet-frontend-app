@@ -1,11 +1,20 @@
-import { Box, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 
 const MainPage = () => {
   return (
-    <Box>
+    <Container>
       <Typography>Main Page</Typography>
-    </Box>
+    </Container>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    redirect: {
+      destination: '/vaults',
+      permanent: false,
+    },
+  }
 }
 
 export default MainPage

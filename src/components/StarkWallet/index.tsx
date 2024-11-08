@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Typography, styled, Box, Button } from '@mui/material'
+import { Typography, styled } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import { AccountBalanceWallet as AccountBalanceWalletIcon } from '@mui/icons-material'
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded'
@@ -14,6 +14,7 @@ import { bigintToStringHex, encodeStr } from '@/utils/common'
 import { getConnectorIcon } from '@/utils/connectorWrapper'
 import { mainnet, sepolia } from '@starknet-react/chains'
 import { BaseButtonSecondary } from '@/components/Base/Buttons/StyledButtons'
+import { defaultNetWork } from '@/utils/network'
 
 const WalletInfo = styled(FlexBox)`
   justify-content: flex-end;
@@ -42,18 +43,17 @@ const StarkWallet = () => {
   const { address, account, isConnected } = useAccount()
   const { disconnect } = useDisconnect()
 
-  const network =
-    process.env.NEXT_PUBLIC_IS_TESTNET === 'true' ? 'testnet' : 'mainnet'
-
   useEffect(() => {
     if (!isConnected || !account) return
     account.getChainId().then((chainId) => {
       const isWrongNetwork =
-        (chainId === bigintToStringHex(sepolia.id) && network === 'mainnet') ||
-        (chainId === bigintToStringHex(mainnet.id) && network === 'testnet')
+        (chainId === bigintToStringHex(sepolia.id) &&
+          defaultNetWork === 'Mainnet') ||
+        (chainId === bigintToStringHex(mainnet.id) &&
+          defaultNetWork === 'Devnet')
       setIsWrongNetwork(isWrongNetwork)
     })
-  }, [account, network, isConnected])
+  }, [account, defaultNetWork, isConnected])
 
   const handleShowWalletDrawer = () => setIsWalletDrawerShown(true)
   const handleCloseWalletDrawer = () => setIsWalletDrawerShown(false)

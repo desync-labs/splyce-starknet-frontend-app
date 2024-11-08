@@ -5,8 +5,8 @@ import { FC, ReactNode, useEffect, useState } from "react";
 const FullScreenDialog = styled(Dialog, {
   shouldForwardProp: (prop) => prop !== "offset",
 })<{ offset?: number }>`
-  top: ${({ offset = 109 }) => `${offset}px`};
-  height: ${({ offset = 109 }) => `calc(100% - ${offset}px)`};
+  top: ${({ offset = 65 }) => `${offset}px`};
+  height: ${({ offset = 65 }) => `calc(100% - ${offset}px)`};
   z-index: 100;
 
   & .MuiDialog-paper {
@@ -15,7 +15,7 @@ const FullScreenDialog = styled(Dialog, {
     border-radius: 0;
   }
   & .MuiBackdrop-root {
-    top: ${({ offset = 109 }) => `${offset}px`};
+    top: ${({ offset = 65 }) => `${offset}px`};
   },
 `;
 
@@ -23,7 +23,7 @@ const ModalContentContainer = styled("div")`
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #000c24 63.06%, #131f35 126.46%);
+  background: #1f2632;
   padding: 24px 16px;
 `;
 
@@ -45,7 +45,7 @@ const BaseDialogFullScreen: FC<BaseDialogFullScreenProps> = ({
   useEffect(() => {
     if (isOpen) {
       let scroll =
-        109 -
+        65 -
         (tabVisible ? 0 : 60) -
         (document.documentElement.scrollTop || document.body.scrollTop);
       scroll = scroll < 0 ? 0 : scroll;
