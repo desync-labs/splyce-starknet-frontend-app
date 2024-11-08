@@ -1,30 +1,30 @@
-import { AccountInterface } from 'starknet'
+import { AccountInterface } from "starknet";
 
 export const getUserEthBalance = async (walletPublicKey: string) => {
   if (!walletPublicKey) {
-    console.error('User wallet public key is required')
-    return
+    console.error("User wallet public key is required");
+    return;
   }
 
   try {
-    console.log('Fetching balance of ETH')
+    console.log("Fetching balance of ETH");
 
-    return 100
+    return 100;
   } catch (error) {
-    console.error('Error fetching balance of ETH', error)
+    console.error("Error fetching balance of ETH", error);
   }
-}
+};
 
 export const getUserTokenBalance = async (
   publicKey: string,
   tokenMintAddress: string
 ) => {
   if (!tokenMintAddress || !publicKey) {
-    return
+    return;
   }
 
-  console.log('Fetching balance of token:', tokenMintAddress)
-}
+  console.log("Fetching balance of token:", tokenMintAddress);
+};
 
 export const depositTokens = async (
   userPublicKey: string,
@@ -35,11 +35,11 @@ export const depositTokens = async (
   vaultId: string
 ) => {
   if (!userPublicKey || !wallet || !vaultId) {
-    return
+    return;
   }
 
-  console.log('Depositing tokens:', amount)
-}
+  console.log("Depositing tokens:", amount);
+};
 
 export const withdrawTokens = async (
   userPublicKey: string,
@@ -50,29 +50,29 @@ export const withdrawTokens = async (
   vaultId: string
 ) => {
   if (!userPublicKey || !wallet) {
-    return
+    return;
   }
 
-  console.log('Withdrawing tokens:', amount)
-}
+  console.log("Withdrawing tokens:", amount);
+};
 
 export const previewRedeem = async (shareBalance: string, vaultId: string) => {
   // todo: implement preview redeem from program
-  return shareBalance
-}
+  return shareBalance;
+};
 
 export const previewDeposit = async (tokenAmount: string, vaultId: string) => {
   // todo: implement preview deposit from program
-  return tokenAmount
-}
+  return tokenAmount;
+};
 
 export const previewWithdraw = async (tokenAmount: string, vaultId: string) => {
   // todo: implement preview withdraw from program
-  return tokenAmount
-}
+  return tokenAmount;
+};
 
 export const getTransactionBlock = async (signature: string) => {
-  console.log('Getting transaction block:', signature)
+  console.log("Getting transaction block:", signature);
   // try {
   //   const transaction = await connection.getTransaction(signature, {
   //     commitment: 'confirmed',
@@ -86,7 +86,7 @@ export const getTransactionBlock = async (signature: string) => {
   //   console.error('Error getting transaction block:', error)
   //   return
   // }
-}
+};
 
 export const faucetTestToken = async (
   userPubKey: string,
@@ -94,18 +94,18 @@ export const faucetTestToken = async (
   wallet: AccountInterface
 ) => {
   if (!userPubKey || !wallet || !tokenPubKey) {
-    return
+    return;
   }
-  console.log('Fauceting test token')
-}
+  console.log("Fauceting test token");
+};
 
 export const getTfVaultPeriods = async (strategyId: string) => {
-  console.log('Fetching periods for strategy:', strategyId)
-  const depositPeriodEnds = 100
-  const lockPeriodEnds = 100
+  //console.log('Fetching periods for strategy:', strategyId)
+  const depositPeriodEnds = 100;
+  const lockPeriodEnds = 100;
 
   return {
     depositPeriodEnds,
     lockPeriodEnds,
-  }
-}
+  };
+};

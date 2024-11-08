@@ -18,11 +18,6 @@ const VaultsNestedNav = () => {
     [location.pathname]
   );
 
-  const isFaucetBridge = useMemo(
-    () => ["/vaults/bridge"].includes(location.pathname),
-    [location.pathname]
-  );
-
   return (
     <NestedRouteNav>
       <NestedRouteLink
@@ -36,13 +31,6 @@ const VaultsNestedNav = () => {
         href="/vaults/faucet"
       >
         Faucet
-      </NestedRouteLink>
-      <NestedRouteLink
-        span={2}
-        className={isFaucetBridge ? "active" : ""}
-        href="/vaults/bridge"
-      >
-        Bridge
       </NestedRouteLink>
     </NestedRouteNav>
   );
