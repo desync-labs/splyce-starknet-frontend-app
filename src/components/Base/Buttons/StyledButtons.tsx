@@ -9,7 +9,7 @@ import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 
 export const WalletButton = styled(Button)`
   color: #183102;
-  background: ${({ theme }) => theme.palette.gradients.primary};
+  background: ${({ theme }) => theme?.palette?.gradients?.primary};
   font-size: 15px;
   line-height: 20px;
   font-weight: 600;

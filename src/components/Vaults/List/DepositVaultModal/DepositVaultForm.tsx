@@ -187,7 +187,7 @@ const DepositVaultForm: FC<VaultDepositFormProps> = ({
                 value={value}
                 type="number"
                 onChange={(e) => {
-                  let inputValue = e.target.value
+                  const inputValue = e.target.value
 
                   const regex = /^\d+(\.\d{0,9})?$/
 

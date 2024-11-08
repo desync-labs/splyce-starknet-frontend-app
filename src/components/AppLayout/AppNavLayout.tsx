@@ -48,7 +48,7 @@ const AppNavLayout = ({ children }: { children: ReactNode }) => {
             <>
               <LogoLink href={"/"}>
                 <Image
-                  src={SplyceAppLogoMobileSrc as string}
+                  src={SplyceAppLogoMobileSrc as unknown as string}
                   alt={"splyce-logo"}
                   width={36}
                   height={36}
@@ -78,7 +78,7 @@ const AppNavLayout = ({ children }: { children: ReactNode }) => {
             <FlexBox sx={{ justifyContent: "flex-start" }}>
               <LogoLink href={"/"}>
                 <Image
-                  src={SplyceAppLogoSrc as string}
+                  src={SplyceAppLogoSrc as unknown as string}
                   alt={"splyce-logo"}
                   width={132}
                   height={20}

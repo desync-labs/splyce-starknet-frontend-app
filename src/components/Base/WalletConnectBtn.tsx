@@ -1,9 +1,9 @@
-import { FC, ReactNode, MouseEvent, useCallback, useState } from 'react'
-import { Button, SxProps, Theme, styled } from '@mui/material'
+import { FC, ReactNode, MouseEvent, useCallback, useState } from "react";
+import { Button, SxProps, Theme, styled } from "@mui/material";
 
 export const WalletButton = styled(Button)`
   border-radius: 8px;
-  background: ${({ theme }) => theme.palette.gradients.secondary};
+  background: ${({ theme }) => theme?.palette?.gradients?.secondary};
   text-transform: capitalize;
   font-size: 13px;
   line-height: 16px;
@@ -19,15 +19,15 @@ export const WalletButton = styled(Button)`
     cursor: pointer;
     pointer-events: all !important;
   }
-`
+`;
 
 type WalletConnectBtnPropsTypes = {
-  fullwidth?: boolean | undefined
-  sx?: SxProps<Theme> | undefined
-  testId?: string
-  children?: ReactNode
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
-}
+  fullwidth?: boolean | undefined;
+  sx?: SxProps<Theme> | undefined;
+  testId?: string;
+  children?: ReactNode;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+};
 
 const WalletConnectBtn: FC<WalletConnectBtnPropsTypes> = ({
   fullwidth,
@@ -36,9 +36,9 @@ const WalletConnectBtn: FC<WalletConnectBtnPropsTypes> = ({
   children,
   onClick,
 }) => {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
 
-  const openConnectorMenu = useCallback(() => setVisible(true), [setVisible])
+  const openConnectorMenu = useCallback(() => setVisible(true), [setVisible]);
 
   return (
     <WalletButton
@@ -48,9 +48,9 @@ const WalletConnectBtn: FC<WalletConnectBtnPropsTypes> = ({
       data-testid={testId}
       aria-hidden={false}
     >
-      {children ? children : 'Connect Wallet'}
+      {children ? children : "Connect Wallet"}
     </WalletButton>
-  )
-}
+  );
+};
 
-export default WalletConnectBtn
+export default WalletConnectBtn;

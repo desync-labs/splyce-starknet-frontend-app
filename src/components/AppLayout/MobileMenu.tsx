@@ -31,7 +31,7 @@ type MobileMenuPropsType = {
 const MobileMenu: FC<MobileMenuPropsType> = memo(({ setOpenMobile }) => {
   return (
     <MobileMenuWrapper onClick={() => setOpenMobile(false)}>
-      <Menu open={true} />
+      <Menu />
     </MobileMenuWrapper>
   );
 });

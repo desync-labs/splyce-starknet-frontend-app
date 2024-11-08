@@ -23,6 +23,9 @@ const useVaultOpenDeposit = (vault: IVault, onClose: () => void) => {
   const [isWalletFetching, setIsWalletFetching] = useState<boolean>(false);
   const [openDepositLoading, setOpenDepositLoading] = useState<boolean>(false);
 
+  const [approveBtn, setApproveBtn] = useState<boolean>(false);
+  const [approvalPending, setApprovalPending] = useState<boolean>(false);
+
   const methods = useForm({
     defaultValues,
     reValidateMode: "onChange",
@@ -177,6 +180,8 @@ const useVaultOpenDeposit = (vault: IVault, onClose: () => void) => {
     [deposit, token, shareToken, address]
   );
 
+  const approve = useCallback(async () => {}, []);
+
   return {
     methods,
     walletBalance,
@@ -191,6 +196,9 @@ const useVaultOpenDeposit = (vault: IVault, onClose: () => void) => {
     setMax,
     handleSubmit,
     onSubmit,
+    approveBtn,
+    approvalPending,
+    approve,
   };
 };
 

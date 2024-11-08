@@ -26,14 +26,16 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.1",
     "recharts": "^2.13.3",
-    "starknet": "^6.11.0",
-    "starknetkit": "^2.3.3"
+    "starknet": "^6.17.0",
+    "starknetkit": "^2.4.0"
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^9",
+    "eslint-config-next": "15.0.3",
     "prettier": "^3.3.3",
     "typescript": "^5"
   }

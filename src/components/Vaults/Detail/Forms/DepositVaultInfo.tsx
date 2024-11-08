@@ -99,7 +99,7 @@ const DepositVaultInfo: FC<DepositVaultInfoProps> = ({
 }) => {
   const { isTfVaultType, isUserKycPassed } = useVaultContext();
   const { token, shareToken, sharesSupply } = vaultItemData;
-  const { connected } = useAccount();
+  const { status } = useAccount();
 
   return (
     <ManageVaultInfoWrapper>
@@ -208,7 +208,7 @@ const DepositVaultInfo: FC<DepositVaultInfoProps> = ({
         >
           Reset
         </Button>
-        {!connected ? (
+        {status === "disconnected" ? (
           <WalletConnectBtn />
         ) : approveBtn && walletBalance !== "0" ? (
           <Button

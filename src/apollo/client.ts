@@ -44,7 +44,7 @@ if (process.env.NEXT_PUBLIC_ENV === "dev") {
   loadErrorMessages();
 }
 
-const httpLink = new HttpLink({ uri: SUBGRAPH_URLS["Devnet"] });
+const httpLink = new HttpLink({ uri: SUBGRAPH_URLS[currentNetWork] });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
@@ -52,8 +52,8 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   let uri: string = "";
 
   uri =
-    currentChainId && (SUBGRAPH_URLS as any)[currentChainId]
-      ? (SUBGRAPH_URLS as any)[currentChainId]
+    currentChainId && (SUBGRAPH_URLS as any)[currentChainId.toString()]
+      ? (SUBGRAPH_URLS as any)[currentChainId.toString()]
       : SUBGRAPH_URLS[currentNetWork];
 
   if (operation.getContext().clientName === "vaults") {

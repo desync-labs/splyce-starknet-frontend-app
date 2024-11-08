@@ -17,7 +17,9 @@ import {
 } from "@/components/Base/Dialog/StyledDialog";
 import { FlexBox } from "@/components/Base/Boxes/StyledBoxes";
 
-const WalletItemWrapper = styled(FlexBox)`
+const WalletItemWrapper = styled(FlexBox, {
+  shouldForwardProp: (prop) => prop !== "disabled",
+})<{ disabled?: boolean }>`
   justify-content: flex-start;
   background: #314156;
   border-radius: 8px;
