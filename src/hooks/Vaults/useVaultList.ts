@@ -8,7 +8,7 @@ import { COUNT_PER_PAGE_VAULT } from '@/utils/Constants'
 import { vaultTitle } from '@/utils/Vaults/getVaultTitleAndDescription'
 import { getDefaultVaultTitle } from '@/utils/Vaults/getVaultTitleAndDescription'
 import { IVault, IVaultPosition, VaultType } from '@/utils/TempData'
-import { defaultNetWork } from '@/utils/network'
+import { currentNetWork } from '@/utils/network'
 import { vaultType } from '@/utils/Vaults/getVaultType'
 import { getUserTokenBalance, previewRedeem } from '@/utils/TempSdkMethods'
 import useSyncContext from '@/context/sync'
@@ -32,7 +32,7 @@ const useVaultList = () => {
   const { address } = useAccount()
   const { lastTransactionBlock, initialBlock } = useSyncContext()
 
-  const network = defaultNetWork
+  const network = currentNetWork
 
   const [vaultSortedList, setVaultSortedList] = useState<IVault[]>([])
   const [vaultPositionsList, setVaultPositionsList] = useState<

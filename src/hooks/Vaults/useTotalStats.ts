@@ -7,7 +7,7 @@ import {
   VAULTS_ACCOUNT_DEPOSITS,
 } from '@/apollo/queries'
 import { IVaultPosition } from '@/utils/TempData'
-import { defaultNetWork } from '@/utils/network'
+import { currentNetWork } from '@/utils/network'
 import useSyncContext from '@/context/sync'
 
 const TRANSACTIONS_PER_PAGE = 1000
@@ -29,7 +29,7 @@ const useTotalStats = (
   const [balanceEarnedLoading, setBalanceEarnedLoading] =
     useState<boolean>(true)
 
-  const network = defaultNetWork
+  const network = currentNetWork
   const { address } = useAccount()
   const { lastTransactionBlock } = useSyncContext()
 

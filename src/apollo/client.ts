@@ -6,7 +6,7 @@ import {
   InMemoryCache,
 } from '@apollo/client'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
-import { defaultNetWork, SUBGRAPH_URLS } from '@/utils/network'
+import { currentNetWork, SUBGRAPH_URLS } from '@/utils/network'
 
 /***
  * For Query we have pagination, So we need to return incoming items
@@ -62,7 +62,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   uri =
     chainId && (SUBGRAPH_URLS as any)[chainId]
       ? (SUBGRAPH_URLS as any)[chainId]
-      : SUBGRAPH_URLS[defaultNetWork]
+      : SUBGRAPH_URLS[currentNetWork]
 
   if (operation.getContext().clientName === 'vaults') {
     uri += '/subgraphs/name/splyce-vault-subgraph'

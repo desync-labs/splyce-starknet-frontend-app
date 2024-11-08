@@ -10,17 +10,17 @@ import {
   useDisconnect,
   useNetwork,
 } from '@starknet-react/core'
+import { Connector } from '@starknet-react/core'
+import { mainnet, sepolia } from '@starknet-react/chains'
 
-import SelectWalletModal from './SelectWalletModal'
+import { currentNetWork } from '@/utils/network'
+import { bigintToStringHex, encodeStr } from '@/utils/common'
+import { getConnectorIcon } from '@/utils/connectorWrapper'
+import SelectWalletModal from '@/components/StarkWallet/SelectWalletModal'
 import { FlexBox } from '@/components/Base/Boxes/StyledBoxes'
 import ModalMessage from '@/components/AppLayout/ModalMessage'
 import WalletInfoModal from '@/components/StarkWallet/WalletInfoModal'
-import { bigintToStringHex, encodeStr } from '@/utils/common'
-import { getConnectorIcon } from '@/utils/connectorWrapper'
-import { mainnet, sepolia } from '@starknet-react/chains'
 import { BaseButtonSecondary } from '@/components/Base/Buttons/StyledButtons'
-import { defaultNetWork } from '@/utils/network'
-import { Connector, InjectedConnector } from '@starknet-react/core'
 
 const WalletInfo = styled(FlexBox)`
   justify-content: flex-end;
@@ -55,12 +55,12 @@ const StarkWallet = () => {
     account.getChainId().then((chainId) => {
       const isWrongNetwork =
         (chainId === bigintToStringHex(sepolia.id) &&
-          defaultNetWork === 'Mainnet') ||
+          currentNetWork === mainnet.network) ||
         (chainId === bigintToStringHex(mainnet.id) &&
-          defaultNetWork === 'Devnet')
+          currentNetWork === sepolia.network)
       setIsWrongNetwork(isWrongNetwork)
     })
-  }, [account, defaultNetWork, isConnected])
+  }, [account, currentNetWork, isConnected])
 
   const handleShowWalletDrawer = () => setIsWalletDrawerShown(true)
   const handleCloseWalletDrawer = () => setIsWalletDrawerShown(false)

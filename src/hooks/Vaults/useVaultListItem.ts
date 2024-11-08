@@ -15,7 +15,7 @@ import {
   IVaultStrategyReport,
   VaultType,
 } from '@/utils/TempData'
-import { defaultNetWork } from '@/utils/network'
+import { currentNetWork } from '@/utils/network'
 import { getTfVaultPeriods, previewRedeem } from '@/utils/TempSdkMethods'
 
 interface UseVaultListItemProps {
@@ -37,7 +37,7 @@ const useVaultListItem = ({ vaultPosition, vault }: UseVaultListItemProps) => {
   const [balanceTokenLoading, setBalanceTokenLoading] = useState<boolean>(false)
   const [loadingEarning, setLoadingEarning] = useState<boolean>(true)
 
-  const network = defaultNetWork
+  const network = currentNetWork
 
   const [depositsList, setDepositsList] = useState([])
   const [withdrawalsList, setWithdrawalsList] = useState([])

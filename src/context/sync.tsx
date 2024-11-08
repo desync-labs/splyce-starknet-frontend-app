@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { useProvider } from '@starknet-react/core'
+import { useBlockNumber, useProvider } from '@starknet-react/core'
 
 type StakingProviderType = {
   children: ReactNode
@@ -30,26 +30,15 @@ export const SyncProvider: FC<StakingProviderType> = ({ children }) => {
   >(null)
   const [initialBlock, setInitialBlock] = useState<number | null>(null)
 
-  const { provider } = useProvider()
+  const { data, error } = useBlockNumber()
 
   useEffect(() => {
-    const getLatestSlot = async () => {
-      try {
-        const latestBlock = await provider.getBlock('latest')
-
-        if (latestBlock.block_number) {
-          if (!initialBlock) {
-            setInitialBlock(latestBlock.block_number as number)
-          }
-          setLastTransactionBlock(latestBlock.block_number as number)
-        }
-      } catch (error) {
-        console.error('Error fetching last block: ', error)
-        return null
+    if (data) {
+      if (!initialBlock) {
+        setInitialBlock(data)
       }
+      setLastTransactionBlock(data)
     }
-
-    getLatestSlot()
   }, [setLastTransactionBlock, setInitialBlock])
 
   const values = useMemo(() => {

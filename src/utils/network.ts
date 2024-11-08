@@ -1,6 +1,6 @@
 import { mainnet, sepolia } from '@starknet-react/chains'
 
-export const defaultNetWork =
+export const currentNetWork =
   process.env.NEXT_PUBLIC_ENV === 'prod' ? mainnet.network : sepolia.network
 
 export const currentRpc =
