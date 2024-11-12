@@ -16,6 +16,7 @@ import {
   BaseDialogWrapper,
 } from "@/components/Base/Dialog/StyledDialog";
 import { FlexBox } from "@/components/Base/Boxes/StyledBoxes";
+import Image from "next/image";
 
 const WalletItemWrapper = styled(FlexBox, {
   shouldForwardProp: (prop) => prop !== "disabled",
@@ -77,7 +78,7 @@ const WalletItem = ({
         onClick={() => tryConnect(connector, isAvailable)}
         disabled={!connector.available()}
       >
-        <img
+        <Image
           src={getConnectorIcon(connector.id)}
           alt={connector.id}
           width={40}

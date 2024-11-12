@@ -21,6 +21,7 @@ import { FlexBox } from "@/components/Base/Boxes/StyledBoxes";
 import ModalMessage from "@/components/AppLayout/ModalMessage";
 import WalletInfoModal from "@/components/StarkWallet/WalletInfoModal";
 import { BaseButtonSecondary } from "@/components/Base/Buttons/StyledButtons";
+import Image from "next/image";
 
 const WalletInfo = styled(FlexBox)`
   justify-content: flex-end;
@@ -90,7 +91,7 @@ const StarkWallet = () => {
       <>
         <FlexBox sx={{ justifyContent: "flex-end" }}>
           <WalletInfo onClick={handleShowWalletDrawer}>
-            <img
+            <Image
               src={getConnectorIcon(connector.id)}
               alt={connector.id}
               width={20}

@@ -19,6 +19,7 @@ import { encodeStr } from "@/utils/common";
 import { getConnectorIcon } from "@/utils/connectorWrapper";
 import { formatNumberPrice } from "@/utils/format";
 import { currentNetWork } from "@/utils/network";
+import Image from "next/image";
 
 const StyledDrawer = styled(Drawer)`
   & .MuiDrawer-paper {
@@ -115,7 +116,7 @@ const WalletInfoModal = ({
       </BaseDialogCloseIcon>
       <DrawerContent>
         <WalletLogoWrapper>
-          <img
+          <Image
             src={getConnectorIcon(connector.id)}
             alt={connector.id}
             width={40}
