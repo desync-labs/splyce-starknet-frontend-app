@@ -15,9 +15,6 @@ const {
 const FONT = "Inter, sans-serif";
 
 declare module "@mui/material/styles/createPalette" {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface PaletteColor extends ColorPartial {}
-
   interface TypeText {
     muted: string;
     light: string;
@@ -44,37 +41,55 @@ declare module "@mui/material/styles/createPalette" {
   }
 }
 
-interface TypographyCustomVariants {
-  display1: CSSProperties;
-  subheader1: CSSProperties;
-  subheader2: CSSProperties;
-  description: CSSProperties;
-  buttonL: CSSProperties;
-  buttonM: CSSProperties;
-  buttonS: CSSProperties;
-  helperText: CSSProperties;
-  tooltip: CSSProperties;
-  main21: CSSProperties;
-  secondary21: CSSProperties;
-  main16: CSSProperties;
-  secondary16: CSSProperties;
-  main14: CSSProperties;
-  secondary14: CSSProperties;
-  main12: CSSProperties;
-  secondary12: CSSProperties;
-}
-
 declare module "@mui/material/styles" {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface TypographyVariants extends TypographyCustomVariants {}
+  interface TypographyVariants {
+    display1: CSSProperties;
+    subheader1: CSSProperties;
+    subheader2: CSSProperties;
+    description: CSSProperties;
+    buttonL: CSSProperties;
+    buttonM: CSSProperties;
+    buttonS: CSSProperties;
+    helperText: CSSProperties;
+    tooltip: CSSProperties;
+    main21: CSSProperties;
+    secondary21: CSSProperties;
+    main16: CSSProperties;
+    secondary16: CSSProperties;
+    main14: CSSProperties;
+    secondary14: CSSProperties;
+    main12: CSSProperties;
+    secondary12: CSSProperties;
+  }
 
-  // allow configuration using `createTheme`
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface TypographyVariantsOptions extends TypographyCustomVariants {}
-
+  interface TypographyVariantsOptions {
+    display1?: CSSProperties;
+    subheader1?: CSSProperties;
+    subheader2?: CSSProperties;
+    description?: CSSProperties;
+    buttonL?: CSSProperties;
+    buttonM?: CSSProperties;
+    buttonS?: CSSProperties;
+    helperText?: CSSProperties;
+    tooltip?: CSSProperties;
+    main21?: CSSProperties;
+    secondary21?: CSSProperties;
+    main16?: CSSProperties;
+    secondary16?: CSSProperties;
+    main14?: CSSProperties;
+    secondary14?: CSSProperties;
+    main12?: CSSProperties;
+    secondary12?: CSSProperties;
+  }
   interface BreakpointOverrides {
     xsm: true;
     xxl: true;
+  }
+
+  interface PaletteColor {
+    100?: string;
+    200?: string;
+    300?: string;
   }
 }
 

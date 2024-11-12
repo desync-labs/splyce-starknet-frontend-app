@@ -107,6 +107,41 @@ const ManagementVaultMethodList: FC<VaultItemManagementProps> = ({
     setValue(newValue);
   };
 
+  const readMethods = useMemo(
+    () =>
+      vaultMethods
+        .filter(
+          (method: any) =>
+            !STATE_MUTABILITY_TRANSACTIONS.includes(method.stateMutability)
+        )
+        .map((method: any, index: number) => (
+          <MethodListItem
+            key={index}
+            method={method}
+            contractAddress={vaultId}
+            index={index}
+          />
+        )),
+    [vaultMethods, vaultId]
+  );
+
+  const writeMethods = useMemo(
+    () =>
+      vaultMethods
+        .filter((method: any) =>
+          STATE_MUTABILITY_TRANSACTIONS.includes(method.stateMutability)
+        )
+        .map((method: any, index: number) => (
+          <MethodListItem
+            key={index}
+            method={method}
+            contractAddress={vaultId}
+            index={index}
+          />
+        )),
+    [vaultMethods, vaultId]
+  );
+
   return (
     <ProgramMethodListWrapper className={isShow ? "showing" : "hide"}>
       <TabContentWrapper sx={{ paddingLeft: 0, paddingRight: 0 }}>
@@ -141,45 +176,10 @@ const ManagementVaultMethodList: FC<VaultItemManagementProps> = ({
               />
             </MethodTypesTabs>
             <MethodsTabPanel value={value} index={0}>
-              {useMemo(
-                () =>
-                  vaultMethods
-                    .filter(
-                      (method) =>
-                        !STATE_MUTABILITY_TRANSACTIONS.includes(
-                          method.stateMutability
-                        )
-                    )
-                    .map((method: any, index: number) => (
-                      <MethodListItem
-                        key={index}
-                        method={method}
-                        contractAddress={vaultId}
-                        index={index}
-                      />
-                    )),
-                [vaultMethods]
-              )}
+              {readMethods}
             </MethodsTabPanel>
             <MethodsTabPanel value={value} index={1}>
-              {useMemo(
-                () =>
-                  vaultMethods
-                    .filter((method) =>
-                      STATE_MUTABILITY_TRANSACTIONS.includes(
-                        method.stateMutability
-                      )
-                    )
-                    .map((method: any, index: number) => (
-                      <MethodListItem
-                        key={index}
-                        method={method}
-                        contractAddress={vaultId}
-                        index={index}
-                      />
-                    )),
-                [vaultMethods]
-              )}
+              {writeMethods}
             </MethodsTabPanel>
           </>
         )}

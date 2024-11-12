@@ -1,20 +1,5 @@
 import { AccountInterface } from "starknet";
 
-export const getUserEthBalance = async (walletPublicKey: string) => {
-  if (!walletPublicKey) {
-    console.error("User wallet public key is required");
-    return;
-  }
-
-  try {
-    console.log("Fetching balance of ETH");
-
-    return 100;
-  } catch (error) {
-    console.error("Error fetching balance of ETH", error);
-  }
-};
-
 export const getUserTokenBalance = async (
   publicKey: string,
   tokenMintAddress: string
@@ -53,10 +38,19 @@ export const withdrawTokens = async (
     return;
   }
 
-  console.log("Withdrawing tokens:", amount);
+  console.log(
+    "Withdrawing tokens:",
+    amount,
+    tokenPubKey,
+    shareTokenPubKey,
+    vaultId
+  );
 };
 
 export const previewRedeem = async (shareBalance: string, vaultId: string) => {
+  if (!shareBalance || !vaultId) {
+    return;
+  }
   // todo: implement preview redeem from program
   return shareBalance;
 };
@@ -100,7 +94,7 @@ export const faucetTestToken = async (
 };
 
 export const getTfVaultPeriods = async (strategyId: string) => {
-  //console.log('Fetching periods for strategy:', strategyId)
+  console.log("Fetching periods for strategy:", strategyId);
   const depositPeriodEnds = 100;
   const lockPeriodEnds = 100;
 

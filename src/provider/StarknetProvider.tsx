@@ -1,25 +1,25 @@
-'use client'
-import { ReactNode } from 'react'
-import { Chain, mainnet, sepolia } from '@starknet-react/chains'
+"use client";
+import { ReactNode } from "react";
+import { mainnet, sepolia } from "@starknet-react/chains";
 import {
   StarknetConfig,
   jsonRpcProvider,
   starkscan,
-} from '@starknet-react/core'
-import { getConnectors } from '@/utils/connectorWrapper'
-import { currentRpc } from '@/utils/network'
+} from "@starknet-react/core";
+import { getConnectors } from "@/utils/connectorWrapper";
+import { currentRpc } from "@/utils/network";
 
 interface StarknetProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function StarknetProvider({ children }: StarknetProviderProps) {
-  const chains = [process.env.NEXT_PUBLIC_ENV === 'prod' ? mainnet : sepolia]
+  const chains = [process.env.NEXT_PUBLIC_ENV === "prod" ? mainnet : sepolia];
   const providers = jsonRpcProvider({
-    rpc: (_chain: Chain) => ({
+    rpc: () => ({
       nodeUrl: currentRpc,
     }),
-  })
+  });
 
   return (
     <StarknetConfig
@@ -31,5 +31,5 @@ export default function StarknetProvider({ children }: StarknetProviderProps) {
     >
       {children}
     </StarknetConfig>
-  )
+  );
 }

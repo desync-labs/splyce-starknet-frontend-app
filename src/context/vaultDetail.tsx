@@ -22,14 +22,15 @@ export type UseVaultContextReturnType = {
   vaultAddress: string;
   vaultLoading: boolean;
   vaultPosition: IVaultPosition;
+  vaultPositionLoading: boolean;
   reports: Record<string, IVaultStrategyReport[]>;
   historicalApr: Record<string, IVaultStrategyHistoricalApr[]>;
   balanceEarned: number;
   balanceToken: string;
-  performanceFee: number;
+  performanceFee: string;
   activeVaultInfoTab: VaultInfoTabs;
-  vaultMethods: FunctionFragment[];
-  strategyMethods: FunctionFragment[];
+  vaultMethods: any[];
+  strategyMethods: any[];
   setActiveVaultInfoTab: Dispatch<SetStateAction<VaultInfoTabs>>;
   managedStrategiesIds: string[];
   isUserManager: boolean;

@@ -355,7 +355,6 @@ const VaultLockingBar = () => {
               !showWithdrawAllButton
             }
             onClick={handleWithdrawAll}
-            isLoading={isWithdrawAllLoading}
           >
             {isWithdrawAllLoading ? (
               <CircularProgress size={20} />

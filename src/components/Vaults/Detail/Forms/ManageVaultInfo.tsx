@@ -40,6 +40,7 @@ type VaultManageInfoProps = {
     formSharedToken: string;
   }>;
   approveBtn: boolean;
+  approvalPending: boolean;
   handleSubmit: UseFormHandleSubmit<
     {
       formToken: string;
@@ -63,6 +64,7 @@ const ManageVaultInfo: FC<VaultManageInfoProps> = ({
   openDepositLoading,
   errors,
   approveBtn,
+  approvalPending,
   handleSubmit,
   onSubmit,
   withdrawLimitExceeded,
@@ -272,6 +274,7 @@ const ManageVaultInfo: FC<VaultManageInfoProps> = ({
             disabled={
               openDepositLoading ||
               (formType === FormType.DEPOSIT && approveBtn) ||
+              (formType === FormType.DEPOSIT && approvalPending) ||
               !!Object.keys(errors).length ||
               (formType === FormType.WITHDRAW &&
                 !!withdrawLimitExceeded(formToken))

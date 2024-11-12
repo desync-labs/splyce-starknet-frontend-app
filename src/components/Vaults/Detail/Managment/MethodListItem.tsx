@@ -204,6 +204,10 @@ const MethodListItem: FC<{
     alert("submit");
   }, [formState, methodType, method, getValues]);
 
+  const renderResponse = useCallback(() => {
+    return response.toString();
+  }, [response, method]);
+
   return (
     <MethodListItemAccordion>
       <AccordionSummaryStyled
@@ -228,7 +232,7 @@ const MethodListItem: FC<{
           noValidate
           autoComplete="off"
         >
-          {method.inputs.map((input) => (
+          {method.inputs.map((input: any) => (
             <Controller
               key={input.name}
               name={

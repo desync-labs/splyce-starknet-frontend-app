@@ -61,7 +61,9 @@ export const StatusLabel: FC<{ strategyId?: string }> = memo(
           (strategy) => strategy.id === strategyId
         );
         if (strategy) {
-          setIsShutDown(strategy.isShutdown as boolean);
+          // ToDo: Implement the shutdown strategy Status field
+          // setIsShutDown(strategy.isShutdown as boolean);
+          setIsShutDown(false);
         }
       }
     }, [strategyId, strategies]);

@@ -27,6 +27,31 @@ export const BaseListPreviewModal = styled(List)`
   }
 `;
 
+export const BaseList = styled(List)`
+  width: 100%;
+  & li {
+    font-size: 14px;
+    padding: 3px 0 3px 8px;
+    span {
+      font-size: 14px;
+    }
+    & div:last-child {
+      padding-right: 8px;
+    }
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    > .MuiListItem-root {
+      padding-left: 0;
+      > .MuiListItemText-root {
+        max-width: 75%;
+      }
+      .MuiListItemSecondaryAction-root {
+        right: 0;
+      }
+    }
+  }
+`;
+
 export const BaseListItem = styled(ListItem)`
   &.MuiListItem-root {
     align-items: center;

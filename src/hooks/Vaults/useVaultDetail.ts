@@ -386,14 +386,15 @@ const useVaultDetail = () => {
               const balance = (await getUserTokenBalance(
                 address,
                 position.shareToken.id
-              )) as string;
+              )) as unknown as string;
 
               let previewRedeemValue = "0";
 
               if (BigNumber(balance).isGreaterThan(0)) {
-                previewRedeemValue = (
-                  await previewRedeem(balance as string, position.vault.id)
-                ).toString();
+                previewRedeemValue = (await previewRedeem(
+                  balance as string,
+                  position.vault.id
+                )) as unknown as string;
                 previewRedeemValue = BigNumber(previewRedeemValue).toString();
               }
 
@@ -457,8 +458,8 @@ const useVaultDetail = () => {
             vault: vaultId,
           },
         }).then((res) => {
-          res.data?.deposits && setDepositsList(res.data.deposits);
-          res.data?.withdrawals && setWithdrawalsList(res.data.withdrawals);
+          if (res.data?.deposits) setDepositsList(res.data.deposits);
+          if (res.data?.withdrawals) setWithdrawalsList(res.data.withdrawals);
         });
       } else {
         setDepositsList([]);
@@ -478,7 +479,7 @@ const useVaultDetail = () => {
     }
 
     return () => {
-      timeout && clearTimeout(timeout);
+      if (timeout) clearTimeout(timeout);
     };
   }, [vaultId, address, fetchVault]);
 
@@ -516,7 +517,7 @@ const useVaultDetail = () => {
     }
 
     return () => {
-      timeout && clearTimeout(timeout);
+      if (timeout) clearTimeout(timeout);
     };
   }, [vault?.strategies, isTfVaultType, activeTfPeriod]);
 
@@ -540,9 +541,10 @@ const useVaultDetail = () => {
           ])
             .then(([transactions, balanceToken]) => {
               setBalanceToken(balanceToken as string);
-              transactions?.data?.deposits &&
+              if (transactions?.data?.deposits)
                 setDepositsList(transactions?.data.deposits);
-              transactions?.data?.withdrawals &&
+
+              if (transactions?.data?.withdrawals)
                 setWithdrawalsList(transactions?.data.withdrawals);
             })
             .finally(() => {

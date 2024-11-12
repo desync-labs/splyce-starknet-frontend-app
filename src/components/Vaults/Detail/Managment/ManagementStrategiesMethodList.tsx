@@ -71,6 +71,41 @@ const ManagementStrategiesMethodTabs: FC<{
     setValue(newValue);
   };
 
+  const readMethods = useMemo(
+    () =>
+      strategyMethods
+        .filter(
+          (method) =>
+            !STATE_MUTABILITY_TRANSACTIONS.includes(method.stateMutability)
+        )
+        .map((method: any, index: number) => (
+          <MethodListItem
+            key={index}
+            method={method}
+            contractAddress={currentStrategyId}
+            index={index}
+          />
+        )),
+    [strategyMethods]
+  );
+
+  const writeMethods = useMemo(
+    () =>
+      strategyMethods
+        .filter((method) =>
+          STATE_MUTABILITY_TRANSACTIONS.includes(method.stateMutability)
+        )
+        .map((method: any, index: number) => (
+          <MethodListItem
+            key={index}
+            method={method}
+            contractAddress={currentStrategyId}
+            index={index}
+          />
+        )),
+    [strategyMethods]
+  );
+
   return !strategyMethods.length ? (
     <Typography px="24px">Has no program methods yet</Typography>
   ) : (
@@ -94,43 +129,10 @@ const ManagementStrategiesMethodTabs: FC<{
         />
       </MethodTypesTabs>
       <MethodsTabPanel value={value} index={0}>
-        {useMemo(
-          () =>
-            strategyMethods
-              .filter(
-                (method) =>
-                  !STATE_MUTABILITY_TRANSACTIONS.includes(
-                    method.stateMutability
-                  )
-              )
-              .map((method: any, index: number) => (
-                <MethodListItem
-                  key={index}
-                  method={method}
-                  contractAddress={currentStrategyId}
-                  index={index}
-                />
-              )),
-          [strategyMethods]
-        )}
+        {readMethods}
       </MethodsTabPanel>
       <MethodsTabPanel value={value} index={1}>
-        {useMemo(
-          () =>
-            strategyMethods
-              .filter((method) =>
-                STATE_MUTABILITY_TRANSACTIONS.includes(method.stateMutability)
-              )
-              .map((method: any, index: number) => (
-                <MethodListItem
-                  key={index}
-                  method={method}
-                  contractAddress={currentStrategyId}
-                  index={index}
-                />
-              )),
-          [strategyMethods]
-        )}
+        {writeMethods}
       </MethodsTabPanel>
     </ManagementStrategiesMethodTabsStyled>
   );

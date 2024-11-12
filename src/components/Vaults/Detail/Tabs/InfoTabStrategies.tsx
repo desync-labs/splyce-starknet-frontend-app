@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, ReactNode, useCallback, useEffect, useState } from "react";
 import { Box, MenuItem, Select, styled, Typography } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
 import useVaultContext from "@/context/vaultDetail";
@@ -73,7 +73,7 @@ const InfoTabStrategies = () => {
   }, [setActiveStrategy, strategies, router.query.strategy]);
 
   const handleChangeActiveStrategy = useCallback(
-    (event: SelectChangeEvent) => {
+    (event: SelectChangeEvent<unknown>, child: ReactNode) => {
       const strategyId = event.target.value as string;
 
       router.replace(

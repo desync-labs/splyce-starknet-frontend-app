@@ -48,13 +48,12 @@ const useVaultOpenDeposit = (vault: IVault, onClose: () => void) => {
       return;
     }
     const balance = await getUserTokenBalance(address, token.id);
-    setWalletBalance(balance as string);
+    setWalletBalance(balance as unknown as string);
     setIsWalletFetching(true);
   }, [address, token?.id, setWalletBalance, setIsWalletFetching]);
 
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    timeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
       getVaultTokenBalance();
     }, 300);
 

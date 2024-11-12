@@ -37,7 +37,6 @@ const useVaultManageDeposit = (
   const { balancePosition, balanceShares } = vaultPosition;
   const { address } = useAccount();
   const { lastTransactionBlock, setLastTransactionBlock } = useSyncContext();
-  const { bridgeInfo } = useBridgeContext();
 
   const methods = useForm({
     defaultValues,
@@ -69,7 +68,7 @@ const useVaultManageDeposit = (
       return;
     }
     const balance = await getUserTokenBalance(address, token.id);
-    setWalletBalance(balance as string);
+    setWalletBalance(balance as unknown as string);
     setIsWalletFetching(true);
   }, [address, token?.id, setWalletBalance, setIsWalletFetching]);
 
@@ -93,12 +92,11 @@ const useVaultManageDeposit = (
 
         setValue("formSharedToken", sharedConverted);
       }, 500),
-    [vault.id, formType, isFullWithdraw, setIsFullWithdraw]
+    [vault.id, formType, isFullWithdraw, setIsFullWithdraw, setValue]
   );
 
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    timeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
       getVaultTokenBalance();
     }, 300);
 
@@ -117,7 +115,7 @@ const useVaultManageDeposit = (
     }
 
     return () => {
-      timeout && clearTimeout(timeout);
+      if (timeout) clearTimeout(timeout);
     };
   }, [formToken, updateSharedAmount, setValue]);
 
@@ -255,6 +253,31 @@ const useVaultManageDeposit = (
     [depositLimit, balanceTokens, walletBalance, balancePosition, formType]
   );
 
+  const depositLimitExceeded = (value: string) => {
+    const formattedDepositLimit = BigNumber(depositLimit).dividedBy(
+      10 ** token.decimals
+    );
+
+    const rule =
+      type === VaultType.TRADEFI
+        ? BigNumber(value).isGreaterThanOrEqualTo(formattedDepositLimit)
+        : BigNumber(balancePosition)
+            .dividedBy(10 ** token.decimals)
+            .plus(value)
+            .decimalPlaces(6, BigNumber.ROUND_UP)
+            .isGreaterThanOrEqualTo(MAX_PERSONAL_DEPOSIT);
+
+    if (rule) {
+      return `The ${
+        type === VaultType.TRADEFI
+          ? formattedDepositLimit.toNumber()
+          : MAX_PERSONAL_DEPOSIT / 1000
+      }k ${token.symbol} limit has been exceeded.`;
+    } else {
+      return false;
+    }
+  };
+
   const withdrawLimitExceeded = (value: string) => {
     /**
      * Logic for TradeFlowVault
@@ -323,6 +346,7 @@ const useVaultManageDeposit = (
     onSubmit,
     methods,
     withdrawLimitExceeded,
+    depositLimitExceeded,
   };
 };
 

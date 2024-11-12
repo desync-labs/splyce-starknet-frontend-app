@@ -41,11 +41,11 @@ const VaultDetailManageForm = () => {
     control,
     formToken,
     formSharedToken,
-    approveBtn,
-    approvalPending,
+    //approveBtn,
+    //approvalPending,
     openDepositLoading,
     errors,
-    approve,
+    //approve,
     setMax,
     validateMaxValue,
     handleSubmit,
@@ -102,9 +102,8 @@ const VaultDetailManageForm = () => {
             onClose={onClose}
             openDepositLoading={openDepositLoading}
             errors={errors}
-            approveBtn={approveBtn}
-            approve={approve}
-            approvalPending={approvalPending}
+            approveBtn={false}
+            approvalPending={false}
             handleSubmit={handleSubmit}
             onSubmit={onSubmit}
             withdrawLimitExceeded={withdrawLimitExceeded}

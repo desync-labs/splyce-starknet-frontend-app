@@ -7,7 +7,7 @@ import {
   ListItemText,
   styled,
 } from "@mui/material";
-import { AppList, AppListItem } from "components/AppComponents/AppList/AppList";
+import { BaseList, BaseListItem } from "@/components/Base/List/StyledList";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const EventsListAccordion = styled(Accordion)`
@@ -17,7 +17,7 @@ const EventsListAccordion = styled(Accordion)`
     min-height: 40px;
   }
 `;
-const EventsListItem = styled(AppListItem)`
+const EventsListItem = styled(BaseListItem)`
   & .MuiListItemSecondaryAction-root {
     max-width: 70%;
   }
@@ -79,13 +79,13 @@ const TransactionResponseDataList: FC<TransactionResponseDataListProps> = ({
           </AccordionSummary>
           <AccordionDetails>
             {Object.entries(event).map(([key, value]) => (
-              <AppList key={key}>
+              <BaseList key={key}>
                 <EventsListItem
                   secondaryAction={<Box>{renderResponseItem(key, value)}</Box>}
                 >
                   <ListItemText primary={<Box>{key.toString()}</Box>} />
                 </EventsListItem>
-              </AppList>
+              </BaseList>
             ))}
           </AccordionDetails>
         </EventsListAccordion>
@@ -94,17 +94,17 @@ const TransactionResponseDataList: FC<TransactionResponseDataListProps> = ({
   };
 
   return (
-    <AppList>
+    <BaseList>
       {entries.map(([key, value]) => (
-        <AppListItem
+        <BaseListItem
           key={key}
           secondaryAction={<Box>{renderResponseItem(key, value)}</Box>}
           sx={{ "& .MuiListItemSecondaryAction-root": { maxWidth: "70%" } }}
         >
           <ListItemText primary={<Box>{key.toString()}</Box>} />
-        </AppListItem>
+        </BaseListItem>
       ))}
-    </AppList>
+    </BaseList>
   );
 };
 
