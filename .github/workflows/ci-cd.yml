@@ -64,9 +64,9 @@ jobs:
       - name: Build Docker image (Production Stage)
         run: |
           docker build --target production \
-            --build-arg NEXT_PUBLIC_RPC_URL_SEPOLIA=${{ vars.NEXT_PUBLIC_RPC_URL_SEPOLIA }}\
-            --build-arg NEXT_PUBLIC_RPC_URL_MAINNET=${{ vars.NEXT_PUBLIC_RPC_URL_MAINNET }}\
-            --build-arg NEXT_PUBLIC_ENV=${{ env.NEXT_PUBLIC_ENV }}\
+            --build-arg NEXT_PUBLIC_RPC_URL_SEPOLIA=${{ vars.NEXT_PUBLIC_RPC_URL_SEPOLIA }} \
+            --build-arg NEXT_PUBLIC_RPC_URL_MAINNET=${{ vars.NEXT_PUBLIC_RPC_URL_MAINNET }} \
+            --build-arg NEXT_PUBLIC_ENV=${{ env.NEXT_PUBLIC_ENV }} \
             -t ${{ env.IMAGE_REPOSITORY }}:${{ github.sha }} .
           docker tag ${{ env.IMAGE_REPOSITORY }}:${{ github.sha }} ${{ env.IMAGE_REPOSITORY }}:${{ env.ENV_TAG }}latest
 
