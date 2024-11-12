@@ -64,10 +64,8 @@ jobs:
       - name: Build Docker image (Production Stage)
         run: |
           docker build --target production \
-            --build-arg NEXT_PUBLIC_MOON_PAY_KEY=${{ secrets.NEXT_PUBLIC_MOON_PAY_KEY }}\
-            --build-arg NEXT_PUBLIC_WALLET_CONNECT_PJ_ID=${{ secrets.NEXT_PUBLIC_WALLET_CONNECT_PJ_ID }}\
-            --build-arg NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}\
-            --build-arg PROD_RPC_KEY_HELIUS=${{ secrets.PROD_RPC_KEY_HELIUS }}\
+            --build-arg NEXT_PUBLIC_RPC_URL_SEPOLIA=${{ vars.NEXT_PUBLIC_RPC_URL_SEPOLIA }}\
+            --build-arg NEXT_PUBLIC_RPC_URL_MAINNET=${{ vars.NEXT_PUBLIC_RPC_URL_MAINNET }}\
             --build-arg NEXT_PUBLIC_ENV=${{ env.NEXT_PUBLIC_ENV }}\
             -t ${{ env.IMAGE_REPOSITORY }}:${{ github.sha }} .
           docker tag ${{ env.IMAGE_REPOSITORY }}:${{ github.sha }} ${{ env.IMAGE_REPOSITORY }}:${{ env.ENV_TAG }}latest
