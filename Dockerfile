@@ -24,6 +24,7 @@ ENV NEXT_PUBLIC_ENV=$NEXT_PUBLIC_ENV
 
 # Copy package files and install all dependencies
 COPY package*.json ./
+RUN npm install
 RUN npm ci
 
 # Copy the rest of the source code
