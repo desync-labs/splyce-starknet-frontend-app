@@ -24,8 +24,8 @@ ENV NEXT_PUBLIC_ENV=$NEXT_PUBLIC_ENV
 
 # Copy package files and install all dependencies
 COPY package*.json ./
-RUN npm install
-RUN npm ci
+RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps
 
 # Copy the rest of the source code
 COPY .github/workflows .
