@@ -27,8 +27,8 @@ COPY package*.json ./
 RUN npm install
 RUN npm ci
 
-# Copy the rest of the source code
-COPY .github/workflows .
+# Copy the rest of the source code, including all folders
+COPY . .
 
 # Build the Next.js application
 RUN npm run build
