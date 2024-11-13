@@ -1,32 +1,43 @@
 {
-  "name": "starknet-frontend",
+  "name": "splyce-starknet-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
+    "@apollo/client": "^3.11.8",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
-    "@starknet-react/chains": "^0.1.7",
-    "@starknet-react/core": "^2.9.0",
-    "@walnuthq/sdk": "^1.1.11",
-    "get-starknet-core": "^3.3.3",
-    "next": "14.2.6",
+    "@starknet-react/chains": "^3.1.0",
+    "@starknet-react/core": "^3.5.0",
+    "bignumber.js": "^9.1.2",
+    "dayjs": "^1.11.13",
+    "graphql": "^16.9.0",
+    "lodash.debounce": "^4.0.8",
+    "next": "^15.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "starknet": "^6.11.0",
-    "starknetkit": "^1.1.9"
+    "react-hook-form": "^7.53.1",
+    "react-player": "^2.16.0",
+    "recharts": "^2.13.3",
+    "starknet": "^6.17.0",
+    "starknetkit": "^2.4.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^9",
+    "eslint-config-next": "15.0.3",
     "prettier": "^3.3.3",
     "typescript": "^5"
   }
